@@ -1,4 +1,7 @@
 // MPI
+//Gabriel Leite - RA: 22.219.028-2
+//Renato Daros - RA: 22.219.018-3
+
 #include <mpi.h>
 #include <stdio.h>
 
