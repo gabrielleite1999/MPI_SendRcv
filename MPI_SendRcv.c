@@ -53,17 +53,17 @@ int main(int argc, char **argv)
       ++j;
     }
     
-    MPI_Send(&temp1, 3, MPI_INT, 1, ROTULO, MPI_COMM_WORLD);
-    MPI_Send(&temp2, 3, MPI_INT, 2, ROTULO, MPI_COMM_WORLD);
-    MPI_Send(&temp3, 3, MPI_INT, 3, ROTULO, MPI_COMM_WORLD);
+    MPI_Send(&temp1, 3, MPI_FLOAT, 1, ROTULO, MPI_COMM_WORLD);
+    MPI_Send(&temp2, 3, MPI_FLOAT, 2, ROTULO, MPI_COMM_WORLD);
+    MPI_Send(&temp3, 3, MPI_FLOAT, 3, ROTULO, MPI_COMM_WORLD);
     
     printf("\nProcesso 0 enviou valores... \n");
 
-    MPI_Recv(&bufferRcv[0], 1, MPI_INT, 1, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&bufferRcv[0], 1, MPI_FLOAT, 1, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-    MPI_Recv(&bufferRcv[1], 1, MPI_INT, 2, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&bufferRcv[1], 1, MPI_FLOAT, 2, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-    MPI_Recv(&bufferRcv[2], 1, MPI_INT, 3, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&bufferRcv[2], 1, MPI_FLOAT, 3, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     printf ("\n\n\nProcesso 0 recebeu Maiores Locais: ");
 
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
   {
     float buffer[3];
     
-    MPI_Recv(&buffer, 3, MPI_INT, 0, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&buffer, 3, MPI_FLOAT, 0, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     printf("Processo 1 Recebeu - ");
     int i;
@@ -100,13 +100,13 @@ int main(int argc, char **argv)
     }
     printf ("Maior do processo 1 - %f\n", maiorLocal);
 
-    MPI_Send(&maiorLocal, 1, MPI_INT, 0, ROTULO, MPI_COMM_WORLD);
+    MPI_Send(&maiorLocal, 1, MPI_FLOAT, 0, ROTULO, MPI_COMM_WORLD);
   }  
   else if (world_rank == 2) 
   {
     float buffer[3];
     
-    MPI_Recv(&buffer, 3, MPI_INT, 0, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&buffer, 3, MPI_FLOAT, 0, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     printf("Processo 2 Recebeu - ");
     int i;
@@ -122,13 +122,13 @@ int main(int argc, char **argv)
     }
     printf ("Maior do processo 2 - %f\n", maiorLocal);
 
-    MPI_Send(&maiorLocal, 1, MPI_INT, 0, ROTULO, MPI_COMM_WORLD);
+    MPI_Send(&maiorLocal, 1, MPI_FLOAT, 0, ROTULO, MPI_COMM_WORLD);
   }  
   else if (world_rank == 3) 
   {
     float buffer[3];
     
-    MPI_Recv(&buffer, 3, MPI_INT, 0, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&buffer, 3, MPI_FLOAT, 0, ROTULO, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     printf("Processo 3 Recebeu - ");
     int i;
@@ -144,7 +144,7 @@ int main(int argc, char **argv)
     }
     printf ("Maior do processo 3 - %f\n", maiorLocal);
 
-    MPI_Send(&maiorLocal, 1, MPI_INT, 0, ROTULO, MPI_COMM_WORLD);    
+    MPI_Send(&maiorLocal, 1, MPI_FLOAT, 0, ROTULO, MPI_COMM_WORLD);    
   }  
   else 
   {
